@@ -28,7 +28,8 @@ public class Ingresso {
         return Math.abs(numberGenerator.nextLong());
     }
 
-    public void calculaTotalIngresso(){
+    public float calculaValorTotalIngresso(){
+        return valorIngresso*(1+taxaCartao/100);
 
     }
 

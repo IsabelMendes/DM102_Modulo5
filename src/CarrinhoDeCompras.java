@@ -26,17 +26,26 @@ public class CarrinhoDeCompras {
         ingressos.add(ingresso);
 
     }
-    public void mostraDetalhesCompras(){
 
-        for (int i=0; i<ingressos.size(); i++) {
-            ingressos.get(i).calculaTotalIngresso();
+
+    public void mostraDetalhesCompras() {
+        float totalCompra = 0;
+        boolean temVipKids = false;
+
+        for (int i = 0; i < ingressos.size(); i++) {
+            Ingresso ingresso = ingressos.get(i);
+            totalCompra += ingresso.calculaValorTotalIngresso();
+
+            if (ingresso instanceof Kids) {
+                temVipKids = true;
+            }
+            ingresso.mostraInfos();
+        }
+        if (temVipKids){
+            totalCompra = totalCompra/2;
         }
 
-        System.out.println("Sua compra total é de: R$ ");
-        System.out.println("Você comprou esses ingressos:");
-        System.out.println("Ingressos VIP: ");
-        System.out.println("Ingressos Camarote: ");
-        System.out.println("Ingressos Kids: ");
+        System.out.println("Sua compra total é de: R$ " + totalCompra);
     }
 }
 
